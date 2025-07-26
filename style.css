@@ -1,0 +1,78 @@
+/* Custom background pattern similar to the screenshot */
+body {
+  min-height: 100vh;
+  background: transparent;
+}
+
+form.bg-yellow-100 {
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+  border-radius: 1.5rem;
+  transform-style: preserve-3d;
+  perspective: 800px;
+  transition: transform 0.4s cubic-bezier(.25,.8,.25,1), box-shadow 0.4s;
+  will-change: transform;
+  position: relative;
+  overflow: visible;
+}
+/* Neon border effect */
+form.bg-yellow-100::before {
+  content: '';
+  position: absolute;
+  top: -6px; left: -6px; right: -6px; bottom: -6px;
+  border-radius: 1.7rem;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 0 24px 6px #ffb300, 0 0 48px 12px #ff9800;
+  opacity: 0.7;
+  transition: box-shadow 0.4s, opacity 0.4s;
+  animation: neonPulse 2.5s infinite alternate;
+}
+@keyframes neonPulse {
+  0% { box-shadow: 0 0 24px 6px #ffb300, 0 0 48px 12px #ff9800; opacity: 0.7; }
+  100% { box-shadow: 0 0 36px 12px #ff9800, 0 0 64px 24px #ffb300; opacity: 1; }
+}
+}
+form.bg-yellow-100:hover {
+  transform: rotateY(8deg) scale(1.04) translateY(-4px);
+  box-shadow: 0 16px 40px 0 rgba(31, 38, 135, 0.22);
+}
+
+/* Animate images with floating effect */
+.floating-img {
+  animation: floatY 3.5s ease-in-out infinite, imgGlow 2.5s infinite alternate;
+  box-shadow: 0 0 16px 2px #ffb300, 0 0 32px 8px #ff9800;
+  border-radius: 1.5rem;
+  border: 2px solid #fff3e0;
+}
+@keyframes floatY {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-18px) scale(1.04); }
+}
+@keyframes imgGlow {
+  0% { box-shadow: 0 0 16px 2px #ffb300, 0 0 32px 8px #ff9800; }
+  100% { box-shadow: 0 0 32px 8px #ff9800, 0 0 48px 16px #ffb300; }
+}
+
+/* Light sweep effect for main area */
+main::before {
+  content: '';
+  position: absolute;
+  left: -30%;
+  top: 0;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(120deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.32) 50%, rgba(255,255,255,0.12) 100%);
+  z-index: 0;
+  pointer-events: none;
+  filter: blur(2px);
+  animation: sweepLight 4s linear infinite;
+}
+@keyframes sweepLight {
+  0% { left: -30%; }
+  100% { left: 100%; }
+}
+
+main {
+  position: relative;
+  z-index: 1;
+}

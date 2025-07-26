@@ -1,0 +1,87 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   Result Analysis System
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+ </head>
+ <body class="min-h-screen flex flex-col" style="position:relative; overflow:hidden;">
+  <!-- Animated RGB Gradient Video Background -->
+  <video autoplay loop muted playsinline id="bgvid" style="position:fixed;top:0;left:0;width:100vw;height:100vh;object-fit:cover;z-index:0;filter:brightness(0.7) saturate(1.3) blur(1px);">
+    <source src="https://www.videvo.net/videvo_files/converted/2016_08/preview/160710A_107_RGB_Gradient_1080p.mp447892.webm" type="video/webm">
+    <source src="https://www.videvo.net/videvo_files/converted/2016_08/preview/160710A_107_RGB_Gradient_1080p.mp447892.mp4" type="video/mp4">
+    <!-- Fallback: If video doesn't load, show a gradient -->
+  </video>
+  <!-- Header -->
+  <header class="bg-gradient-to-b from-orange-400 to-orange-300 border-b border-gray-300" style="z-index:2; position:relative;">
+   <div class="max-w-7xl mx-auto py-3">
+    <h1 class="text-center text-2xl font-semibold italic text-[#004d40]" style="font-family: serif;">
+     Result Analysis System
+    </h1>
+   </div>
+  </header>
+  <!-- Subheader -->
+  <div class="text-center text-sm font-semibold text-gray-800 mt-2">
+   Exam Result
+  </div>
+  <!-- Main content area -->
+  <main class="flex flex-col md:flex-row justify-center items-center flex-grow max-w-7xl mx-auto mt-6 px-4 gap-10" style="z-index:2; position:relative;">
+   <!-- Left image -->
+   <div class="flex-shrink-0">
+    <img alt="3D white figure holding a large magnifying glass looking at a small bar graph with an upward blue arrow" class="w-[250px] h-[250px] object-contain floating-img" height="250" src="https://storage.googleapis.com/a1aa/image/0b89d541-438d-49d2-fa21-6cba80db6bd7.jpg" width="250"/>
+   </div>
+   <!-- Sign In box -->
+   <form class="bg-yellow-100 p-6 w-[280px] flex flex-col gap-3 border border-yellow-300" style="font-family: serif;">
+    <h2 class="text-center font-semibold text-sm mb-1">
+     Sign In
+    </h2>
+    <div class="text-xs font-semibold mb-2 text-center">
+     Login As:
+     <label class="inline-flex items-center ml-2">
+      <input checked="" class="form-radio text-gray-700" name="loginAs" type="radio" value="hod"/>
+      <span class="ml-1">
+       HOD
+      </span>
+     </label>
+     <label class="inline-flex items-center ml-2">
+      <input class="form-radio text-gray-700" name="loginAs" type="radio" value="staff"/>
+      <span class="ml-1">
+       Staff
+      </span>
+     </label>
+    </div>
+    <input class="border border-gray-300 text-xs px-2 py-1 focus:outline-none focus:ring-1 focus:ring-yellow-400" placeholder="Enter username" type="text"/>
+    <input class="border border-gray-300 text-xs px-2 py-1 focus:outline-none focus:ring-1 focus:ring-yellow-400" placeholder="Enter password" type="password"/>
+    <button class="bg-[#5c4329] text-white text-xs font-semibold py-1 mt-1" type="submit">
+     Login
+    </button>
+   </form>
+   <!-- Right image -->
+   <div class="flex-shrink-0">
+    <img alt="3D colorful pie chart with vertical bar graphs and a magnifying glass focusing on a section" class="w-[250px] h-[250px] object-contain floating-img" height="250" src="https://storage.googleapis.com/a1aa/image/21d6b65a-ff0a-43b1-7c3f-446a208391bf.jpg" width="250"/>
+   </div>
+  </main>
+  <!-- Footer -->
+  <footer class="bg-gradient-to-b from-orange-400 to-orange-300 border-t border-gray-300 mt-10" style="z-index:2; position:relative;">
+   <div class="max-w-7xl mx-auto py-3 text-center text-xs font-semibold text-[#5c4329]" style="font-family: serif;">
+    <nav class="inline-flex gap-4">
+     <a class="hover:underline" href="#">
+      Home
+     </a>
+     <a class="hover:underline" href="#">
+      About Us
+     </a>
+     <a class="hover:underline" href="#">
+      Sign In
+     </a>
+    </nav>
+   </div>
+  </footer>
+</body>
+<script src="script.js"></script>
+</html>
