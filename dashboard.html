@@ -1,0 +1,269 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   Result Analysis System
+  </title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <style>
+    body {
+      /* Rich, vibrant multi-color gradient background */
+      background: linear-gradient(135deg, #ff512f 0%, #dd2476 40%, #1e3c72 80%, #2a5298 100%);
+      min-height: 100vh;
+    }
+    .nav-anime ul li a {
+      position: relative;
+      transition: color 0.2s;
+    }
+    .nav-anime ul li a::after {
+      content: '';
+      position: absolute;
+      left: 0; right: 0; bottom: -2px;
+      height: 2px;
+      background: linear-gradient(90deg, #ff9800, #4fc3f7, #ba68c8, #ffd54f, #90caf9);
+      border-radius: 2px;
+      transform: scaleX(0);
+      transition: transform 0.3s cubic-bezier(.4,2,.6,1);
+    }
+    .nav-anime ul li a:hover::after, .nav-anime ul li a:focus::after {
+      transform: scaleX(1);
+    }
+    .header-3d {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+    .model-3d {
+      width: 48px; height: 48px;
+      animation: float3d 2.5s ease-in-out infinite alternate;
+      filter: drop-shadow(0 4px 16px #0008);
+    }
+    @keyframes float3d {
+      0% { transform: translateY(0) rotateY(0deg); }
+      100% { transform: translateY(-12px) rotateY(20deg); }
+    }
+    .dashboard-btn {
+      border-image: linear-gradient(90deg, #ff9800, #4fc3f7, #ba68c8, #ffd54f, #90caf9) 1;
+      border-radius: 0.75rem;
+      transition: box-shadow 0.2s, border-color 0.2s, transform 0.25s cubic-bezier(.4,2,.6,1);
+      box-shadow: 0 2px 8px 0 #0002;
+      opacity: 0;
+      transform: translateY(30px) scale(0.95);
+      animation: fadeInUp 0.7s cubic-bezier(.4,2,.6,1) forwards;
+    }
+    .dashboard-btn:nth-child(1) { animation-delay: 0.05s; }
+    .dashboard-btn:nth-child(2) { animation-delay: 0.12s; }
+    .dashboard-btn:nth-child(3) { animation-delay: 0.19s; }
+    .dashboard-btn:nth-child(4) { animation-delay: 0.26s; }
+    .dashboard-btn:nth-child(5) { animation-delay: 0.33s; }
+    .dashboard-btn:nth-child(6) { animation-delay: 0.40s; }
+    .dashboard-btn:nth-child(7) { animation-delay: 0.47s; }
+    .dashboard-btn:nth-child(8) { animation-delay: 0.54s; }
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(30px) scale(0.95); }
+      80% { opacity: 1; transform: translateY(-6px) scale(1.03); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .dashboard-btn:hover {
+      box-shadow: 0 4px 16px 0 #0003;
+      border-color: #ff9800;
+      transform: scale(1.06) rotate(-2deg);
+      animation: bounceBtn 0.4s;
+    }
+    @keyframes bounceBtn {
+      0% { transform: scale(1.06) rotate(-2deg); }
+      30% { transform: scale(1.12) rotate(2deg); }
+      60% { transform: scale(0.98) rotate(-1deg); }
+      100% { transform: scale(1.06) rotate(-2deg); }
+    }
+    /* --- after-login.css (inlined) --- */
+    /* Example: you can add your after-login.css content here if needed */
+    /* .custom-class { ... } */
+  </style>
+ </head>
+ <body class="min-h-screen flex flex-col">
+  <!-- Background Video -->
+  <video id="bgVideo" autoplay loop muted playsinline poster="parts/frame.jpg" style="position:fixed;top:0;left:0;width:100vw;height:100vh;object-fit:cover;z-index:-1;opacity:0.35;pointer-events:none;">
+    <source src="intro/clg view.mp4" type="video/mp4">
+    <!-- Fallback for browsers that don't support the video tag -->
+    Your browser does not support the video tag.
+  </video>
+  <!-- Header with 3D model and gradient -->
+  <header class="bg-gradient-to-r from-orange-400 to-orange-300 py-3 shadow-lg">
+    <div class="header-3d">
+      <svg class="model-3d" viewBox="0 0 64 64" fill="none">
+        <ellipse cx="32" cy="20" rx="14" ry="14" fill="#ffb300"/>
+        <rect x="18" y="34" width="28" height="20" rx="10" fill="#ff9800"/>
+        <ellipse cx="32" cy="54" rx="10" ry="4" fill="#ffd54f" opacity=".7"/>
+        <ellipse cx="24" cy="18" rx="2" ry="3" fill="#fff"/>
+        <ellipse cx="40" cy="18" rx="2" ry="3" fill="#fff"/>
+        <ellipse cx="32" cy="26" rx="4" ry="2" fill="#fff" opacity=".5"/>
+      </svg>
+      <h1 class="text-center text-orange-900 font-serif italic font-semibold text-lg select-none" style="font-style: italic; font-family: serif;">
+        Result Analysis System
+      </h1>
+    </div>
+  </header>
+  <!-- Navigation bar -->
+  <nav class="bg-white bg-opacity-90 border border-gray-300 mx-auto mt-4 max-w-5xl w-[95%] px-2 py-1 flex flex-wrap items-center justify-between text-xs sm:text-sm nav-anime">
+   <ul class="flex flex-wrap gap-3 sm:gap-6 items-center text-blue-900 font-semibold">
+    <li>
+     <a class="hover:underline text-blue-900 font-bold" href="result-analysis.html">
+      Result Analysis
+     </a>
+    </li>
+    <li>
+     <a class="text-red-700 font-bold underline" href="dashboard.html">
+      Home
+     </a>
+    </li>
+    <li>
+     <a class="hover:underline" href="add-student.html">
+      Add Student
+     </a>
+    </li>
+    <li>
+     <a class="hover:underline" href="student-report.html">
+      Student Report
+     </a>
+    </li>
+    <li>
+     <a class="hover:underline" href="add-subjects.html">
+      Add Subjects
+     </a>
+    </li>
+    <li>
+     <a class="hover:underline" href="subject-report.html">
+      Subjects Report
+     </a>
+    </li>
+    <li>
+     <a class="hover:underline" href="add-user.html">
+      Add User
+     </a>
+    </li>
+    <li>
+     <a class="hover:underline" href="users-report.html">
+      Users Report
+     </a>
+    </li>
+    <li>
+     <a class="hover:underline" href="add-marks.html">
+      Add Marks
+     </a>
+    </li>
+   </ul>
+   <div class="text-green-700 text-xs sm:text-sm font-semibold whitespace-nowrap">
+    <span id="userDisplay">User</span> |
+    <a class="hover:underline" href="#" id="logoutBtn">Logout</a>
+   </div>
+  </nav>
+  <!-- Main content container -->
+  <main class="flex-grow mx-auto max-w-5xl w-[95%] mt-6 mb-10 bg-white bg-opacity-90 border border-gray-300 p-4">
+   <h2 class="text-center font-semibold text-gray-800 mb-6 text-sm sm:text-base">
+    Select your Option
+   </h2>
+   <!-- Grid of options -->
+   <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-4xl mx-auto text-center text-xs sm:text-sm text-gray-600">
+    <a class="flex flex-col items-center justify-center border-2 border-transparent bg-white py-4 px-2 hover:bg-gray-50 animate-3dcard dashboard-btn" href="add-student.html">
+      <span class="mb-2 block">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" class="animated-human">
+          <ellipse cx="20" cy="12" rx="8" ry="8" fill="#ffb300"/>
+          <rect x="12" y="20" width="16" height="14" rx="7" fill="#ff9800"/>
+        </svg>
+      </span>
+      Add Student
+    </a>
+    <a class="flex flex-col items-center justify-center border-2 border-transparent bg-white py-4 px-2 hover:bg-gray-50 animate-3dcard dashboard-btn" href="student-report.html">
+      <span class="mb-2 block">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" class="animated-human">
+          <ellipse cx="20" cy="12" rx="8" ry="8" fill="#4fc3f7"/>
+          <rect x="12" y="20" width="16" height="14" rx="7" fill="#0288d1"/>
+        </svg>
+      </span>
+      Student Report
+    </a>
+    <a class="flex flex-col items-center justify-center border-2 border-transparent bg-white py-4 px-2 hover:bg-gray-50 animate-3dcard dashboard-btn" href="add-subjects.html">
+      <span class="mb-2 block">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" class="animated-human">
+          <ellipse cx="20" cy="12" rx="8" ry="8" fill="#81c784"/>
+          <rect x="12" y="20" width="16" height="14" rx="7" fill="#388e3c"/>
+        </svg>
+      </span>
+      Add Subjects
+    </a>
+    <a class="flex flex-col items-center justify-center border-2 border-transparent bg-white py-4 px-2 hover:bg-gray-50 animate-3dcard dashboard-btn" href="subject-report.html">
+      <span class="mb-2 block">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" class="animated-human">
+          <ellipse cx="20" cy="12" rx="8" ry="8" fill="#ba68c8"/>
+          <rect x="12" y="20" width="16" height="14" rx="7" fill="#7b1fa2"/>
+        </svg>
+      </span>
+      Subject Report
+    </a>
+    <a class="flex flex-col items-center justify-center border-2 border-transparent bg-white py-4 px-2 hover:bg-gray-50 animate-3dcard dashboard-btn" href="add-user.html">
+      <span class="mb-2 block">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" class="animated-human">
+          <ellipse cx="20" cy="12" rx="8" ry="8" fill="#ff8a65"/>
+          <rect x="12" y="20" width="16" height="14" rx="7" fill="#d84315"/>
+        </svg>
+      </span>
+      Add new user
+    </a>
+    <a class="flex flex-col items-center justify-center border-2 border-transparent bg-white py-4 px-2 hover:bg-gray-50 animate-3dcard dashboard-btn" href="users-report.html">
+      <span class="mb-2 block">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" class="animated-human">
+          <ellipse cx="20" cy="12" rx="8" ry="8" fill="#ffd54f"/>
+          <rect x="12" y="20" width="16" height="14" rx="7" fill="#fbc02d"/>
+        </svg>
+      </span>
+      Users Report
+    </a>
+    <a class="flex flex-col items-center justify-center border-2 border-transparent bg-white py-4 px-2 hover:bg-gray-50 animate-3dcard dashboard-btn" href="add-marks.html">
+      <span class="mb-2 block">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" class="animated-human">
+          <ellipse cx="20" cy="12" rx="8" ry="8" fill="#a1887f"/>
+          <rect x="12" y="20" width="16" height="14" rx="7" fill="#4e342e"/>
+        </svg>
+      </span>
+      Add Marks
+    </a>
+    <a class="flex flex-col items-center justify-center border-2 border-transparent bg-white py-4 px-2 hover:bg-gray-50 animate-3dcard dashboard-btn" href="result-analysis.html">
+      <span class="mb-2 block">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" class="animated-human">
+          <ellipse cx="20" cy="12" rx="8" ry="8" fill="#90caf9"/>
+          <rect x="12" y="20" width="16" height="14" rx="7" fill="#1976d2"/>
+        </svg>
+      </span>
+      Result Analysis
+    </a>
+   </div>
+  </main>
+ </body>
+ <script>
+  // Display logged-in user name/email from localStorage (inlined from after-login.js)
+  const userDisplay = document.getElementById('userDisplay');
+  let user = localStorage.getItem('loggedInUser');
+  if (!user) {
+    // Fallback for demo: if not set, set a default user (remove this in production)
+    const demoUser = { name: 'Demo User', email: 'demo@example.com' };
+    localStorage.setItem('loggedInUser', JSON.stringify(demoUser));
+    user = JSON.stringify(demoUser);
+  }
+  try {
+    const userObj = JSON.parse(user);
+    userDisplay.textContent = userObj.name || userObj.email || userObj.username || 'User';
+  } catch {
+    userDisplay.textContent = user;
+  }
+  // Optional: Logout clears login info and redirects
+  document.getElementById('logoutBtn').onclick = function(e) {
+    e.preventDefault();
+    localStorage.removeItem('loggedInUser');
+    window.location.href = 'new.html';
+  };
+ </script>
+</html>

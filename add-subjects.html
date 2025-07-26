@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Subjects</title>
+  <link rel="stylesheet" href="after-login.css"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen flex flex-col">
+  <!-- Navigation bar -->
+  <nav class="bg-white bg-opacity-90 border border-gray-300 mx-auto mt-4 max-w-5xl w-[95%] px-2 py-1 flex flex-wrap items-center justify-between text-xs sm:text-sm nav-anime">
+   <ul class="flex flex-wrap gap-3 sm:gap-6 items-center text-blue-900 font-semibold">
+    <li><a class="hover:underline text-blue-900 font-bold" href="result-analysis.html">Result Analysis</a></li>
+    <li><a class="text-red-700 font-bold underline" href="dashboard.html">Home</a></li>
+    <li><a class="hover:underline" href="add-student.html">Add Student</a></li>
+    <li><a class="hover:underline" href="student-report.html">Student Report</a></li>
+    <li><a class="hover:underline" href="add-subjects.html">Add Subjects</a></li>
+    <li><a class="hover:underline" href="subject-report.html">Subjects Report</a></li>
+    <li><a class="hover:underline" href="add-user.html">Add User</a></li>
+    <li><a class="hover:underline" href="users-report.html">Users Report</a></li>
+    <li><a class="hover:underline" href="add-marks.html">Add Marks</a></li>
+   </ul>
+   <div class="text-green-700 text-xs sm:text-sm font-semibold whitespace-nowrap">
+    <span id="userDisplay">User</span> |
+    <a class="hover:underline" href="#" id="logoutBtn">Logout</a>
+   </div>
+  </nav>
+  <header class="bg-gradient-to-r from-orange-400 to-orange-300 py-3">
+    <h1 class="text-center text-orange-900 font-serif italic font-semibold text-lg select-none">Add Subjects</h1>
+  </header>
+  <main class="flex flex-col items-center justify-center flex-grow max-w-3xl mx-auto mt-10 px-4">
+    <form id="addSubjectForm" class="bg-white bg-opacity-90 border border-gray-300 p-6 rounded w-full max-w-md" style="font-family: serif;">
+      <h2 class="text-xl font-semibold mb-4 text-center">Add Subject</h2>
+      <input id="subjectName" class="border border-gray-300 text-xs px-2 py-1 mb-3 w-full" placeholder="Subject Name" type="text" required />
+      <input id="subjectCode" class="border border-gray-300 text-xs px-2 py-1 mb-3 w-full" placeholder="Subject Code" type="text" required />
+      <select id="subjectType" class="border border-gray-300 text-xs px-2 py-1 mb-3 w-full" required>
+        <option value="">Select Type</option>
+        <option value="Theory">Theory</option>
+        <option value="Practical">Practical</option>
+        <option value="Lab">Lab</option>
+      </select>
+      <button class="bg-[#5c4329] text-white text-xs font-semibold py-2 px-4 rounded w-full" type="submit">Add Subject</button>
+      <div id="addSubjectMsg" class="text-green-700 text-xs mt-2 text-center"></div>
+    </form>
+    <script>
+      document.getElementById('addSubjectForm').onsubmit = function(e) {
+        e.preventDefault();
+        const name = document.getElementById('subjectName').value.trim();
+        const code = document.getElementById('subjectCode').value.trim();
+        const type = document.getElementById('subjectType').value;
+        if (!name || !code || !type) return;
+        let subjects = JSON.parse(localStorage.getItem('subjects') || '[]');
+        subjects.push({ name, code, type });
+        localStorage.setItem('subjects', JSON.stringify(subjects));
+        document.getElementById('addSubjectMsg').textContent = 'Subject added!';
+        this.reset();
+        setTimeout(()=>{ document.getElementById('addSubjectMsg').textContent = ''; }, 2000);
+      };
+    </script>
+  </main>
+</body>
+<script>
+  // Display logged-in user name/email from localStorage
+  const userDisplay = document.getElementById('userDisplay');
+  let user = localStorage.getItem('loggedInUser');
+  if (!user) {
+    const demoUser = { name: 'Demo User', email: 'demo@example.com' };
+    localStorage.setItem('loggedInUser', JSON.stringify(demoUser));
+    user = JSON.stringify(demoUser);
+  }
+  try {
+    const userObj = JSON.parse(user);
+    userDisplay.textContent = userObj.name || userObj.email || userObj.username || 'User';
+  } catch {
+    userDisplay.textContent = user;
+  }
+  document.getElementById('logoutBtn').onclick = function(e) {
+    e.preventDefault();
+    localStorage.removeItem('loggedInUser');
+    window.location.href = 'new.html';
+  };
+</script>
+</html>
