@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const user = users.find(u => u.username === username && u.password === password && u.role === role);
     if (user) {
       // Success: redirect to dashboard
-      window.location.href = 'anoter_codes/dashboard.html';
+      window.location.href = 'another_codes/dashboard.html';
     } else {
       alert('Unauthorized: Invalid credentials or role.');
     }
@@ -102,4 +102,5 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
+
 
